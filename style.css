@@ -2,7 +2,9 @@ body {
     background: linear-gradient(to right, #f0f4c3, #a5d6a7);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+p {
+    text-align: justify;
+  }
 header.hero {
     background: url('https://images.unsplash.com/photo-1581091012184-7c4cd8a21009') center/cover no-repeat;
     color: white;
@@ -90,4 +92,31 @@ header.hero {
 }
 .container {
     margin-top: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  table.dataTable thead th {
+    background-color: #388e3c;
+    color: white;
+  }
+  table.dataTable {
+    border: 1px solid #ccc;
+  }
+  .form-control:invalid {
+    border-color: #e53935;
+  }
+  .form-control:valid {
+    border-color: #43a047;
+  }
+  .invalid-feedback {
+    display: none;
+    color: #e53935;
+  }
+  .is-invalid + .invalid-feedback {
+    display: block;
+  }
+  #urlap {
+    max-width: 600px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
