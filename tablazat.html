@@ -3,31 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beadandó Weboldal</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <title>Táblázat</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #f0f4c3, #a5d6a7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    table.dataTable thead th {
+      background-color: #388e3c;
+      color: white;
+    }
+    table.dataTable {
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Kezdőlap</a>
       <div class="navbar-nav">
-        <a class="nav-link" href="oldal1.html">Oldal 1</a>
-        <a class="nav-link" href="oldal2.html">Oldal 2</a>
-        <a class="nav-link" href="oldal3.html">Oldal 3</a>
-        <a class="nav-link" href="oldal4.html">Oldal 4</a>
+        <a class="nav-link" href="galeria.html">Galéria</a>
+        <a class="nav-link" href="urlap.html">Űrlap</a>
+        <a class="nav-link active" href="tablazat.html">Táblázat</a>
+        <a class="nav-link" href="kapcsolat.html">Kapcsolat</a>
       </div>
     </div>
   </nav>
 
-  <main class="container mt-4">
-    <h1>Beadandó Weboldal Kezdőlap</h1>
-    <p>Ez a főoldal. Itt egy kis bevezető szöveg...</p>
-    <img src="img/kep1.jpg" alt="Kép 1" class="img-fluid">
-    <img src="img/kep2.jpg" alt="Kép 2" class="img-fluid">
-    <img src="img/kep3.jpg" alt="Kép 3" class="img-fluid">
-    <p>Hosszabb szöveg... (többször is megismételhető, hogy legyen mit görgetni)</p>
-  </main>
+  <div class="container">
+    <h1 class="mb-4">Programozók Táblázata</h1>
+    <table id="programmers" class="display table table-striped">
+      <thead>
+        <tr>
+          <th>Név</th>
+          <th>Szakterület</th>
+          <th>Tapasztalat (év)</th>
+          <th>Technológiák</th>
+          <th>Város</th>
+          <th>Email</th>
+          <th>Elérhetőség</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          const tbody = [];
+          for (let i = 1; i <= 25; i++) {
+            tbody.push(`
+              <tr>
+                <td>Fejlesztő ${i}</td>
+                <td>${i % 2 === 0 ? 'Frontend' : 'Backend'}</td>
+                <td>${Math.floor(Math.random() * 11)}</td>
+                <td>${i % 2 === 0 ? 'HTML, CSS, JS' : 'Node.js, SQL'}</td>
+                <td>${['Budapest', 'Debrecen', 'Szeged'][i % 3]}</td>
+                <td>dev${i}@example.com</td>
+                <td>+36 30 123 45${String(i).padStart(2, '0')}</td>
+              </tr>
+            `);
+          }
+          document.write(tbody.join(''));
+        </script>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#programmers').DataTable({
+        pageLength: 25,
+        lengthChange: false,
+        language: {
+          search: "Keresés:",
+          info: "_TOTAL_ találatból _START_ - _END_",
+          paginate: {
+            next: "Következő",
+            previous: "Előző"
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>

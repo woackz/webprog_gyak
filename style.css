@@ -88,3 +88,6 @@ header.hero {
     justify-content: center;
     padding: 1rem;
 }
+.container {
+    margin-top: 3rem;
+  }
